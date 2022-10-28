@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vue-todolist</title>
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+            <h1 class="my-4">Add a new Task</h1>
+            <div class="inputs d-flex flex-wrap">
+            <input class="form-control" type="text" v-model="newTask.text" @keyup.enter="addTask">
+            <button class="btn btn-dark my-2" @click="addTask">Aggiungi</button>
+            <h4 class="text-danger col-12" v-show="error">ERRORE - Non hai inserito task!</h4>
+        </div>
+            <div class="task">
+                <h3 class="my-4">Todo</h3>
+                
+                <ul v-if="tasks.length !==0">
+                    <li class="mb-3" v-for="(task,index) in tasks" @click.stop="underline(task)"
+                    :class="task.done === true ? 'underline' : ''">{{task.text}}
+                        <button  @click.stop="removeTask(index)" class="float btn btn-danger">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </li>
+                </ul>
+                <p v-else><i class="fa-solid fa-circle-check"></i> Hai completato tutte le task!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <!-- SCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
