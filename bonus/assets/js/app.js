@@ -29,7 +29,7 @@ createApp({
     },
     methods: {
         addTask() {
-            if (this.newTask.text === null || this.newTask.text === '') {
+            if (this.newTask.text === null || this.newTask.text === ' ') {
                 this.error = true;
             } else {
                 this.tasks.unshift(this.newTask);
