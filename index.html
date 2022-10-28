@@ -27,7 +27,7 @@
         <div class="container">
             <h1 class="my-4">Add a new Task</h1>
             <div class="inputs d-flex flex-wrap">
-            <input class="form-control" type="text" v-model="newTask.text" @keyup.enter="addTask">
+            <input class="form-control" type="text" v-model="newTask.text" @keyup.enter="addTask" oninput="validate(this)">
             <button class="btn btn-dark my-2" @click="addTask">Aggiungi</button>
             <h4 class="text-danger col-12" v-show="error">ERRORE - Non hai inserito task!</h4>
         </div>

@@ -29,7 +29,7 @@ createApp({
     },
     methods: {
         addTask() {
-            if (this.newTask.text === null || this.newTask.text === '') {
+            if (this.newTask.text === null || this.newTask.text === ''|| this.newTask.text.length < 5) {
                 this.error = true;
             } else {
                 this.tasks.unshift(this.newTask);
@@ -48,8 +48,15 @@ createApp({
                 singleTask.done = false
             } else {
                 singleTask.done = true
+                
             }
         }
     }
+
+
 }).mount('#app')
 
+function validate(input){
+    if(/^\s/.test(input.value))
+      input.value = '';
+  }
